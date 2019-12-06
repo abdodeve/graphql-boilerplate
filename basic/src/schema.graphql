@@ -3,6 +3,7 @@ type Query {
   drafts: [Post!]!
   post(id: ID!): Post
   me: User
+  adevFunc: String
 }
 
 type Mutation {
