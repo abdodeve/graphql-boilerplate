@@ -1,3 +1,18 @@
 type Query {
     hello(name: String): String
+    posts: [Post!]!
+    post(id: ID!): Post
+}
+
+type Mutation {
+    helloMutation(name: String): String
+    createPost(title: String!, content: String): Post
+    deletePost(id: ID!): Post
+}
+
+type Post {
+  id: ID!
+  published: Boolean!
+  title: String!
+  content: String!
 }
