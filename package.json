@@ -3,6 +3,7 @@
     "start": "node src/index.js"
   },
   "dependencies": {
+    "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
     "graphql-yoga": "1.18.3",
     "mongoose": "^5.8.1"
