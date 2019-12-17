@@ -1,35 +1,40 @@
-const hello = (_, args) => {
-  return `Hello ${args.name || "World"}!`;
+const PostModel = require("./model");
+
+/**
+ * posts
+ * Get all posts
+ * @param {*} _
+ * @param {*} args
+ */
+const posts = async (_, args) => {
+  try {
+    // fetch posts
+    const allPosts = await PostModel.find({});
+
+    return allPosts;
+  } catch (error) {
+    console.error("posts =>", error);
+  }
 };
 
-const posts = (_, args) => {
-  return [
-    {
-      id: 1,
-      published: true,
-      title: "Title 1",
-      content: "Content 1"
-    },
-    {
-      id: 2,
-      published: true,
-      title: "Title 2",
-      content: "Content 2"
-    }
-  ];
-};
+/**
+ * post
+ * Get single post
+ * @param {*} _
+ * @param {*} args
+ */
+const post = async (_, args) => {
+  try {
+    // get the post
+    const thePost = await PostModel.findById(args.id);
 
-const post = (_, args) => {
-  return {
-    id: 1,
-    published: true,
-    title: "Title 1",
-    content: "Content 1"
-  };
+    return thePost;
+  } catch (error) {
+    console.error("post =>", error);
+  }
 };
 
 module.exports = {
-  hello,
   posts,
   post
 };

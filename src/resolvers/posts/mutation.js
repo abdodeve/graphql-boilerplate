@@ -1,29 +1,60 @@
-const helloMutation = (_, args) => {
-  console.log(args);
-  return `Hello ${args.name || "World"}!`;
-};
+const PostModel = require("./model");
 
-const createPost = (_, args) => {
-  return {
-    id: Math.floor(Math.random() * 10000),
-    published: false,
+/**
+ * createPost
+ * @param {*} _
+ * @param {*} args
+ */
+const createPost = async (_, args) => {
+  // Prepare Model
+  let postModel = new PostModel({
     title: args.title,
-    content: args.content
-  };
+    content: args.content,
+    published: false
+  });
+
+  try {
+    // Save
+    const postSaved = await postModel.save();
+    return postSaved;
+  } catch (error) {
+    console.error("postSave =>", error);
+  }
 };
 
-const deletePost = (_, args) => {
-  console.log(args);
-  return {
-    id: args.id,
-    published: true,
-    title: "Title 1",
-    content: "Content 1"
-  };
+/**
+ * updatePost
+ * @param {*} _
+ * @param {*} args
+ */
+const updatePost = async (_, args) => {
+  try {
+    // Update
+    const postUpdated = PostModel.findByIdAndUpdate(args.id, args, {
+      new: true
+    });
+    return postUpdated;
+  } catch (error) {
+    console.error("postSave =>", error);
+  }
+};
+
+/**
+ * deletePost
+ * @param {*} _
+ * @param {*} args
+ */
+const deletePost = async (_, args) => {
+  try {
+    const removedPost = await PostModel.findByIdAndRemove(args.id);
+    return removedPost;
+  } catch (error) {
+    console.error("deletePost =>", error);
+  }
 };
 
 module.exports = {
-  helloMutation,
   createPost,
+  updatePost,
   deletePost
 };
