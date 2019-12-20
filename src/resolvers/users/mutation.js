@@ -1,31 +1,60 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const UserModel = require("./model");
 
-const auth = {
-  async signup(parent, args, context) {
-    const password = await bcrypt.hash(args.password, 10);
-    const user = await context.prisma.createUser({ ...args, password });
+/**
+ * createUser
+ * @param {*} _
+ * @param {*} args
+ */
+const createUser = async (_, args) => {
+  // Prepare Model
+  let userModel = new UserModel({
+    name: args.name,
+    email: args.email,
+    password: args.password
+  });
 
-    return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
-      user
-    };
-  },
-
-  async login(parent, { email, password }, context) {
-    const user = await context.prisma.user({ email });
-    if (!user) {
-      throw new Error(`No user found for email: ${email}`);
-    }
-    const passwordValid = await bcrypt.compare(password, user.password);
-    if (!passwordValid) {
-      throw new Error("Invalid password");
-    }
-    return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
-      user
-    };
+  try {
+    // Save
+    const userSaved = await userModel.save();
+    return userSaved;
+  } catch (error) {
+    console.error("userSave =>", error);
   }
 };
 
-module.exports = { auth };
+/**
+ * updateUser
+ * @param {*} _
+ * @param {*} args
+ */
+const updateUser = async (_, args) => {
+  try {
+    // Update
+    const userUpdated = UserModel.findByIdAndUpdate(args.id, args, {
+      new: true
+    });
+    return userUpdated;
+  } catch (error) {
+    console.error("userSave =>", error);
+  }
+};
+
+/**
+ * deleteUser
+ * @param {*} _
+ * @param {*} args
+ */
+const deleteUser = async (_, args) => {
+  try {
+    const removedUser = await UserModel.findByIdAndRemove(args.id);
+    return removedUser;
+  } catch (error) {
+    console.error("deleteUser =>", error);
+  }
+};
+
+module.exports = {
+  createUser,
+  updateUser,
+  deleteUser
+};
