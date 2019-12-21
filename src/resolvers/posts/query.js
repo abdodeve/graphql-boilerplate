@@ -1,4 +1,5 @@
 const PostModel = require("./model");
+const UserModel = require("../users/model");
 
 /**
  * posts
@@ -26,9 +27,13 @@ const posts = async (_, args) => {
 const post = async (_, args) => {
   try {
     // get the post
-    const thePost = await PostModel.findById(args.id);
+    const thePostDoc = await PostModel.findById(args.id);
+    const thePostObject = thePostDoc.toObject({ getters: true });
+    const theUserDoc = await UserModel.findById(thePostDoc.user_id);
+    const theUserObject = theUserDoc.toObject({ getters: true });
+    const post = { ...thePostObject, user: theUserObject };
 
-    return thePost;
+    return post;
   } catch (error) {
     console.error("post =>", error);
   }
