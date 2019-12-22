@@ -8,6 +8,7 @@ const PostModel = require("./model");
 const createPost = async (_, args) => {
   // Prepare Model
   let postModel = new PostModel({
+    user: args.user_id,
     title: args.title,
     content: args.content,
     published: false
@@ -16,6 +17,7 @@ const createPost = async (_, args) => {
   try {
     // Save
     const postSaved = await postModel.save();
+
     return postSaved;
   } catch (error) {
     console.error("postSave =>", error);
