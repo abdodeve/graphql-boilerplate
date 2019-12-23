@@ -1,4 +1,5 @@
 const PostModel = require("./model");
+const UserModel = require("../users/model");
 
 /**
  * createPost
@@ -15,8 +16,13 @@ const createPost = async (_, args) => {
   });
 
   try {
-    // Save
+    // Save post
     const postSaved = await postModel.save();
+    // Save post in user
+    await UserModel.findOneAndUpdate(
+      { _id: args.user_id },
+      { $push: { posts: postSaved._id } }
+    );
 
     return postSaved;
   } catch (error) {

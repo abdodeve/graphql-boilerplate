@@ -9,7 +9,9 @@ const UserModel = require("./model");
 const users = async (_, args) => {
   try {
     // fetch users
-    const allUsers = await UserModel.find({});
+    const allUsers = await UserModel.find({})
+      .populate("posts")
+      .exec();
 
     return allUsers;
   } catch (error) {
@@ -26,12 +28,9 @@ const users = async (_, args) => {
 const user = async (_, args) => {
   try {
     // get the user
-    // const theUser = await UserModel.findById(args.id);
     const theUser = await UserModel.findById(args.id)
       .populate("posts")
       .exec();
-    console.log({ theUser });
-
     return theUser;
   } catch (error) {
     console.error("user =>", error);

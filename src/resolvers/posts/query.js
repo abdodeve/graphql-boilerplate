@@ -9,7 +9,9 @@ const PostModel = require("./model");
 const posts = async (_, args) => {
   try {
     // fetch posts
-    const allPosts = await PostModel.find({});
+    const allPosts = await PostModel.find({})
+      .populate("user")
+      .exec();
 
     return allPosts;
   } catch (error) {
