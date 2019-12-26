@@ -61,6 +61,31 @@ const deletePost = async (_, args) => {
   }
 };
 
+/**
+ * assignePostToUser
+ * @param {*} _
+ * @param {*} args
+ */
+const assignePostToUser = async (_, args) => {
+  try {
+    // Save post
+    const postSaved = await postModel.save();
+    // Save post in user
+    await UserModel.findOneAndUpdate(
+      { _id: args.old_user_id },
+      { $pull: { posts: args.post_id } }
+    );
+    await UserModel.findOneAndUpdate(
+      { _id: args.new_user_id },
+      { $push: { posts: args.post_id } }
+    );
+
+    return postSaved;
+  } catch (error) {
+    console.error("deleteUser =>", error);
+  }
+};
+
 module.exports = {
   createPost,
   updatePost,
