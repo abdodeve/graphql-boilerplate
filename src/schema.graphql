@@ -6,6 +6,9 @@ type Query {
     #users
     users: [User!]!
     user(id: ID!): User
+
+    #comments
+    comment(id: ID!): User
 }
 
 type Mutation {
@@ -18,6 +21,11 @@ type Mutation {
     createUser(name: String!, email: String, password: String): User
     updateUser(id: ID!, name: String!, email: String, password: String): User
     deleteUser(id: ID!): User
+
+    #comments
+    createComment(post_id: ID!, content: String!, published_at: String): Comment
+    updateComment(post_id: ID!, id: ID!, content: String!, published_at: String): Comment
+    deleteComment(post_id: ID!, id: ID!): Comment
 }
 
 type Post {
@@ -26,6 +34,12 @@ type Post {
   title: String
   content: String
   user: User
+}
+
+type Comment {
+  id: ID!
+  content: String
+  published_at: String
 }
 
 type User {
