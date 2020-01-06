@@ -14,9 +14,11 @@
 ## Getting started
 
 ```sh
-# 1. Navigate to the folder
-# 2. Run yarn install or npm install
-# 3. Start server using yarn run start or npm start (runs on http://localhost:4000) and open in GraphQL Playground
+# 1 Rename .env.example as .env 
+# 2 Change MONGODB_URI by your DB uri
+# 3 Navigate to the folder
+# 4.Run npm install
+# 5.Start server using node src/index.js (runs on http://localhost:4000) and open in GraphQL Playground
 ```
 ![alt text](https://i.imgur.com/yjkt0mQ.png) ![alt text](https://i.imgur.com/Ym06T2Y.png)
 
@@ -24,7 +26,7 @@
 
 ### Commands
 
-* `yarn start` or `npm run start` starts GraphQL server on `http://localhost:4000`
+* `npm run start` starts GraphQL server on `http://localhost:4000`
 
 ### Project structure
 
