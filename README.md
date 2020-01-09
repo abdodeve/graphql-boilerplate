@@ -1,8 +1,12 @@
 
+
 <h1 align="center"><strong>Boilerplate for a full GraphQL Server</strong></h1>
 
 <br />
-![](https://imgur.com/lIi4YrZ.png)
+
+![alt text](https://imgur.com/lIi4YrZ.png)
+
+![alt text](https://i.imgur.com/Ym06T2Y.png)
 <br />
 <div align="center"><strong>🚀 Bootstrap your GraphQL server within seconds</strong></div>
 <div align="center">Advanced starter kit for a flexible GraphQL server for Node.js - based on best practices from the GraphQL community.</div>
@@ -40,7 +44,31 @@ cd graphql-boilerplate
 npm install
 # 5.Start server using node src/index.js (runs on http://localhost:4000) and open in GraphQL Playground
 ```
-![alt text]([https://i.imgur.com/EHamtnI.png](https://i.imgur.com/EHamtnI.png)[https://i.imgur.com/EHamtnI.png](https://i.imgur.com/EHamtnI.png)) ![alt text](https://i.imgur.com/Ym06T2Y.png)
+
+### Request exampls
+#### Query
+```sh
+# get all posts with related comments and user
+query {
+   posts {
+      id
+      published
+      title
+      content
+      comments {
+      	content
+      }
+      user{
+        name
+        email
+      }
+    }
+}
+```
+
+![https://i.imgur.com/EHamtnI.png](https://i.imgur.com/EHamtnI.png)
+
+![alt text](https://i.imgur.com/Ym06T2Y.png)
 
 ## Documentation
 
@@ -60,6 +88,8 @@ npm install
 
 ## Contributing
 
-The GraphQL boilerplates are maintained by the GraphQL community, with official support from the [Apollo](https://dev-blog.apollodata.com) & [Graphcool](https://blog.graph.cool/) teams.
-
-Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions or want to contribute yourself, join the [`#graphql-boilerplate`](https://graphcool.slack.com/messages/graphql-boilerplate) channel on our [Slack](https://graphcool.slack.com/).
+1. Clone it (<https://github.com/abdodeve/graphql-boilerplate.git>)
+2. Create your feature branch (`git checkout -b feature/featureName`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/featureName`)
+5. Create a new Pull Request.
