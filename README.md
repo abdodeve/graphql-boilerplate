@@ -30,7 +30,7 @@
 
 - **Mongoose**: The elegant mongodb object modeling for node.js
 
-Demonstration of this repo **(GraphQL Boilerplate)** hosted on [graphql-boilerplate](http://graphql.abdelhadidev.com).
+Demonstration of this repo **GraphQL Boilerplate** hosted on live server [graphql-boilerplate](http://graphql.abdelhadidev.com).
 
 
 ## Getting started
