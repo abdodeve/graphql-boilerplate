@@ -95,7 +95,7 @@ mutation{
 
 ### Project structure
 
-![](https://i.imgur.com/uD2fqZo.png)
+![https://i.imgur.com/qvGYgsD.png](https://i.imgur.com/qvGYgsD.png)
 
 | File name 　　　　　　　　　　　　　　| Description 　　　　　　　　<br><br>| 
 | :--  | :--         |
