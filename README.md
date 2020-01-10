@@ -1,6 +1,6 @@
 
 
-<h1 align="center"><strong>Boilerplate for a full GraphQL Server</strong></h1>
+<h1 align="center"><strong>Boilerplate for an advanced GraphQL Server</strong></h1>
 
 <br />
 
@@ -48,7 +48,7 @@ npm install
 ### Request exampls
 #### Query
 ```sh
-# get all posts with related comments and user
+# Get all posts with related comments and user
 query {
    posts {
       id
@@ -68,7 +68,24 @@ query {
 
 ![https://i.imgur.com/EHamtnI.png](https://i.imgur.com/EHamtnI.png)
 
-![alt text](https://i.imgur.com/Ym06T2Y.png)
+
+#### Mutation
+```sh
+# Create new post request
+mutation{
+					createPost(
+              user_id: "5e14dc6c5c2cb87b05f9197a"
+              title: "Love Node.js"
+              content: "Node.js is most powerfull language"
+            ){
+							       id
+              title
+              content
+            }
+}
+```
+
+![https://i.imgur.com/yJJLlO1.png](https://i.imgur.com/yJJLlO1.png)
 
 ## Documentation
 
