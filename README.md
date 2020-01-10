@@ -6,7 +6,7 @@
 
 ![alt text](https://imgur.com/lIi4YrZ.png)
 
-![alt text](https://i.imgur.com/Ym06T2Y.png)
+![https://i.imgur.com/XkDNkYm.png](https://i.imgur.com/XkDNkYm.png)
 <br />
 <div align="center"><strong>🚀 Bootstrap your GraphQL server within seconds</strong></div>
 <div align="center">Advanced starter kit for a flexible GraphQL server for Node.js - based on best practices from the GraphQL community.</div>
@@ -73,7 +73,7 @@ query {
 ```sh
 # Create new post request
 mutation{
-					createPost(
+	createPost(
               user_id: "5e14dc6c5c2cb87b05f9197a"
               title: "Love Node.js"
               content: "Node.js is most powerfull language"
