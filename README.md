@@ -30,9 +30,9 @@
 
 - **Mongoose**: The elegant mongodb object modeling for node.js
 
-For a fully-fledged **GraphQL & Node.js tutorial**, visit [How to GraphQL](https://www.howtographql.com/graphql-js/0-introduction/).
+Demonstration of this repo **(GraphQL Boilerplate)** hosted on [graphql-boilerplate](http://graphql.abdelhadidev.com).
 
-  
+
 ## Getting started
 
 ```sh
